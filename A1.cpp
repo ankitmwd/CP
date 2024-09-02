@@ -1,27 +1,22 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <unordered_set>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
-int fun(int start, int end, unordered_map<int, vector<int>> &Adj, int n)
+int fun(int start, int end, vector<int> &vis, vector<int> Adj[])
 {
-    unordered_set<int> vis;
     queue<pair<int, int>> que;
     que.push({start, 0});
     while (!que.empty())
     {
         int Node = que.front().first;
         int step = que.front().second;
-        vis.insert(Node);
+        vis[Node] = 1;
         if (Node == end)
             return step;
         que.pop();
         for (auto child : Adj[Node])
         {
-            if (vis.find(child)==vis.end())
+            if (vis[child] == 0)
             {
-                vis.insert(child);
+                vis[child] = 1;
                 que.push({child, step + 1});
             }
         }
@@ -32,7 +27,7 @@ int main()
 {
     int n, m;
     cin >> n >> m;
-    unordered_map<int, vector<int>> Adj;
+    vector<int> Adj[n + 1];
     int x, y;
     for (int i = 0; i < m; i++)
     {
@@ -41,6 +36,7 @@ int main()
         Adj[y].push_back(x);
     }
     cin >> x >> y;
-    int ans = fun(x, y, Adj, n);
+    vector<int> vis(n + 1, 0);
+    int ans = fun(x, y, vis, Adj);
     cout << (ans == -1 ? 0 : ans) << endl;
 }

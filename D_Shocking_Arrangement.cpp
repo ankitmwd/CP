@@ -27,7 +27,7 @@ void solve()
         return;
     }
     int mx = pos[0] - neg[0];
-    cout << "max :" << mx << endl;
+    // cout << "max :" << mx << endl;
     if (pos.size() > neg.size())
     {
         swap(pos, neg);

@@ -10,7 +10,7 @@ void solve()
     int n, x;
     cin >> n >> x;
     int pos = 1;
-    int sz = 60;
+    int sz = 71;
     vector<int> v(sz, 0), v2(sz, 0);
     if (n == x)
     {

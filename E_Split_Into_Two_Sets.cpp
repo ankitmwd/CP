@@ -4,7 +4,6 @@ using namespace std;
 int is_loop(int Node, vector<int> &vis, vector<int> Adj[])
 {
     vis[Node] = 1;
-
     for (auto child : Adj[Node])
     {
         if (vis[child] == 0)
